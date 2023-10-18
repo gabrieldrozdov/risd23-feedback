@@ -1,0 +1,114 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Arial', sans-serif;
+	font-variation-settings: "wght" 500, "SRFF" 0;
+}
+:root {
+	--width: 200vw;
+	--height: 200dvh;
+	--color: black;
+}
+body {
+	background-size: 10px 10px;
+	background-image: url('assets/meta/grid.svg');
+}
+.container {
+	width: 100vw;
+	height: 100dvh;
+	position: relative;
+	overflow: hidden;
+	cursor: crosshair;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container[data-color="red"] {
+	--color: red;
+}
+.container[data-color="blue"] {
+	--color: blue;
+}
+.border {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	border: 1px solid var(--color);
+}
+.content {
+	position: absolute;
+	left: calc(50% - calc(var(--width) / 2));
+	top: calc(50% - calc(var(--height) / 2));
+	width: var(--width);
+	height: var(--height);
+}
+.link {
+	position: absolute;
+	transform: translate(-50%, -50%) scale(0);
+	text-decoration: none;
+	font-size: 12px;
+	top: 50%;
+	left: 50%;
+	transition: top 1s, left 1s, transform 1s;
+}
+.link:hover {
+	z-index: 99 !important;
+}
+.link-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	border: 1px solid var(--color);
+	transition: .2s;
+	transform-origin: center;
+	background-color: white;
+}
+.link:hover .link-content {
+	transform: scale(1.05);
+	box-shadow: 0 10px 20px rgba(0,0,0,.5);
+}
+.link:active .link-content {
+	transform: scale(0.98);
+	box-shadow: 0 2px 2px rgba(0,0,0,.5);
+}
+.link img {
+	width: 200px;
+    object-fit: contain;
+    overflow: hidden;
+	margin: 20px;
+	box-shadow: 0 10px 20px rgba(0,0,0,.5);
+	transition: .2s, border 0s;
+}
+.link:hover img {
+	box-shadow: 0 2px 4px rgba(0,0,0,.5);
+}
+.link figcaption {
+	width: 240px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: var(--color);
+	color: white;
+	white-space: nowrap;
+	padding: 5px 20px 5px 20px;
+}
+.link p {
+	font-size: 18px;
+	width: 240px;
+	padding: 20px;
+	color: black;
+	text-align: left;
+}
+.path {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 1s;
+}
+.redblue {
+	background-color: var(--color);
+}
